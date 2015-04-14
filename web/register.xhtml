@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="page">
+
+        <h:form id="reg">
+            <p:panelGrid columns="1" >
+            <p:panelGrid columns="3" id="panel">
+                <p:outputLabel for="name" value="Name:"/>
+                <p:inputText id="name" required="true" requiredMessage="You must enter a name" value="#{user.name}"/>
+                <p:message for="name"/>
+                <p:outputLabel for="birthdate" value="Birthdate:" />
+                <p:calendar id="birthdate"  pattern="MM-dd-yyyy" mask="true" value="#{user.dateOfBirth}" required="true" requiredMessage="You must enter a birthdate"/>
+                <p:message for="birthdate"/>
+                <p:outputLabel for="phone" value="Phone #:"/>
+                <p:inputMask id="phone" mask="(999) 999-9999" required="true" value="#{user.phoneNumber}" requiredMessage="You must enter a phone number"/>
+                <p:message for="phone"/>
+                <p:outputLabel for="bgcolor" value="Background color:"/>
+                <p:colorPicker id="bgcolor" value="#{user.bgcolor}"/>
+                <p:spacer/>
+                <p:outputLabel for="username" value="Username:"/>
+                <p:inputText id="username" required="true" value="#{user.userName}" requiredMessage="You must enter a username"/>
+                <p:message for="username"/>
+                <p:outputLabel for="password1" value="Password:"/>
+                <p:password id="password1" match="password2" required="true" value="#{user.password}" requiredMessage="You must enter a password" validatorMessage="Password does not match"/>
+                <p:message for="password1"/>
+                <p:outputLabel for="password2" value="Re-type password:"/>
+                <p:password id="password2" required="true" requiredMessage="Passowrd cannot be empty"/>
+                <p:message for="password2" display="password2"/>
+            </p:panelGrid> 
+                <p:panelGrid columns="2" layout="grid">
+                    <p:commandButton value="Submit" update="panel" action="#{user.register}"/>
+                    <p:link value="Home Page" href="index.xhtml"/>
+                </p:panelGrid>
+                
+            </p:panelGrid>
+        </h:form>     
+
+    </ui:define>
+</ui:composition>
+

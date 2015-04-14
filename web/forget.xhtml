@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="page">
+
+        <h:form id="form">
+
+            <p:messages id="msg" />
+            <p:panel header="Retrive password" style="width: 32%;">
+
+                <p:panelGrid columns="2" id="panel">
+
+                    <p:outputLabel for="username" value="Username:"/>
+                    <p:inputText id="username"  required="true" value="#{user.userName}" requiredMessage="Invald username or password"/>
+                    <p:outputLabel for="phone" value="Phone #:"/>
+                    <p:inputMask id="phone" mask="(999) 999-9999" required="true" value="#{user.phoneNumber}" requiredMessage="You must enter a phone number"/>
+                    
+
+                </p:panelGrid> 
+                <p:panelGrid columns="2">
+                    <p:commandButton value="Get password" update="form" action="#{user.retreivePassword()}" style=" color:  blue" />
+                        <p:link value="Home Page" href="index.xhtml"/>
+            </p:panelGrid>
+                </p:panel>
+        </h:form>     
+
+    </ui:define>
+</ui:composition>
+
